@@ -1,6 +1,6 @@
 # nnext
 
-This is the nnext package for LaTeX. It is an add-on for the **gb4e** example package used in  linguistics. It implements the `\Next`, `\NNext`, `\Last`, and `\LLast` commands from the **linguex** package or the `\nextx`, `\anextx`, `\lastx`, `\blastx`, and `\bblastx` commands from the **expex** package. The package takes its name from the distinctively named `\NNext` command found in **linguex**.
+This is the nnext package for LaTeX. It is an add-on for the [**gb4e**](https://www.ctan.org/pkg/gb4e) example package used in  linguistics. It implements the `\Next`, `\NNext`, `\Last`, and `\LLast` commands from the [**linguex**](https://www.ctan.org/pkg/linguex) package or the `\nextx`, `\anextx`, `\lastx`, `\blastx`, and `\bblastx` commands from the [**expex**](https://www.ctan.org/pkg/expex) package. The package takes its name from the distinctively named `\NNext` command found in **linguex**.
 
 ## Introduction
 
