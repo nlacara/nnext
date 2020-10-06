@@ -1,0 +1,644 @@
+% \iffalse meta-comment
+%
+% Copyright (C) 2020 by Nicholas LaCara
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either
+% version 1.3 of this license or (at your option) any later
+% version. The latest version of this license is in:
+%
+% http://www.latex-project.org/lppl.txt
+%
+% and version 1.3 or later is part of all distributions of
+% LaTeX version 2005/12/01 or later.
+%
+% \fi
+%
+% \iffalse
+%<package>\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+%<package>\ProvidesPackage{nnext}
+%<package>   [2020/10/06 v0.0 The nnext package]
+%
+%<*driver>
+\documentclass{ltxdoc}
+\usepackage{url}
+\usepackage{charter}
+\usepackage{gb4e}
+\usepackage{nnext}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+\begin{document}
+\DocInput{nnext.dtx}
+\end{document}
+%</driver>
+% \fi
+% \CheckSum{0}
+%
+% \changes{v0.0}{2020/10/05}{Initial version}
+%
+% \GetFileInfo{nnext.sty}
+% \DoNotIndex{\newcommand,}
+%
+% \title{The \textsf{nnext} package}
+% \author{Nicholas LaCara \\ \texttt{nick.lacara@gmail.com}}
+%
+% \maketitle
+% 
+% \abstract{This package is an add-on for the \textsf{gb4e} example package 
+% used in linguistics. It implements the \cmd{\Next}, \cmd{\NNext}, 
+% \cmd{\Last}, and \cmd{\LLast} commands from the \textsf{linguex} package or 
+% the \cmd{\nextx}, \cmd{\anextx}, \cmd{\lastx}, \cmd{\blastx}, and 
+% \cmd{\bblastx} commands from the \textsf{expex} package.} The package takes 
+% its name from the distinctively named \cmd{\NNext} command found in
+% \textsf{linguex}.
+% 
+% \section{Introduction}
+% 
+% The popular linguistics example package \textsf{linguex} and the less popular
+% (though more powerful) package \textsf{expex} allow users to refer to
+% previously or to-be defined examples through mnemonic commands such as 
+% \cmd{\Next} or \cmd{\nextx}. The popular package \textsf{gb4e} lacks any such
+% functionality. The goal of this package is to provide this functionality for 
+% \textsf{gb4e} and related packages so that users that need (or want) to use
+% \textsf{gb4e} but are more comfortable with \textsf{linguex} or
+% \textsf{expex} can still have access to these macros while using
+% \textsf{gb4e}.
+% 
+% This package is currently compatible with the original \textsf{gb4e} package
+% as well as the modified version \textsf{langsci-gb4e} used by Language 
+% Science Press and with \textsf{gb4e-emulate} by Alan Munn (which reimplements
+% \textsf{gb4e}'s functionality with the package \textsf{enumitem}).\footnote{%
+% Unfortunately, \textsf{gb4e-emulate} is not on \textsc{ctan}. It is, however,
+% available at its GitHub repository: %
+% \url{https://github.com/amunn/gb4e-emulate}}
+% 
+% \section{Usage}
+% 
+% \subsection{Loading the package}
+% 
+% The package should be loaded in your preamble with |\usepackage{nnext}|. It
+% should be loaded \emph{after} \textsf{gb4e} (or whichever variant you are
+% using).
+% 
+% \subsection{Package options}
+% 
+% The package has a few options that may be specified when loaded:
+% 
+% \begin{description}
+%   \item[\texttt{linguex}] This option defines the macros \cmd{\Next}, 
+%       \cmd{\NNext}, \cmd{\Last}, and \cmd{\LLast}, as found in the 
+%       \textsf{linguex} package. It is the default package option and does not
+%       need to be specified.
+%       
+%   \item[\texttt{expex}] This option defines the macros \cmd{\nextx},
+%       \cmd{\anextx}, \cmd{\lastx}, \cmd{\blastx}, and \cmd{\bblastx}, as 
+%       found in the \textsf{expex} package.
+% 
+%   \item[\texttt{noparens}] This option disables the use of parentheses around
+%       example numbers that are on by default when \textsf{linguex} emulation
+%       is used. This is the typical behavior for \textsf{gb4e} and 
+%       \textsf{expex}.
+%
+% \end{description}
+% 
+% \subsection{Macros}
+%
+% \subsubsection{\textsf{linguex} emulation mode (default)}
+%
+% If the user loads the package with the \textsf{linguex} option or, indeed,
+% with no options specified, the package will provide the following macros.
+% 
+%   \begin{itemize}
+% 
+%       \item \DescribeMacro{\Next} The macro \cmd{\Next} will print the next 
+%           example number. So, if the previous example was (15), this will 
+%           print (16).
+%           
+%       \item \DescribeMacro{\NNext} The macro \cmd{\NNext} will print the 
+%           example number after next. So, if the previous example was (15), 
+%           this will print (17).
+% 
+%       \item \DescribeMacro{\Last} The macro \cmd{\Last} will print the 
+%           previous example number. So, if the previous example was (15), 
+%           this will print (15).
+% 
+%       \item \DescribeMacro{\LLast} The macro \cmd{\LLast} will print the 
+%           example number before last. So, if the previous example was (15), 
+%           this will print (14).
+% 
+%   \end{itemize}
+%
+% \noindent Usage of these macros is straightforward. Simply deploy
+% them in running text, as in the following code:
+% 
+%  \begin{verbatim}
+%  If you want to refer to the next example, type \Next. 
+%  If you want to refer to the example after that, type \NNext.
+% 
+%    \begin{exe}
+%      \ex[]{This is an example.}
+%      \ex[*]{This are another example.}
+%    \end{exe}
+% 
+%  \noindent If you want to refer to the previous example,
+%  type \Last. If you want to refer to the example before
+%  that, type \LLast.
+% \end{verbatim}
+%
+% 
+% \noindent This code produces the following output:\medskip
+% 
+% \framebox{\begin{minipage}{0.9\linewidth}
+%If you want to refer to the next example, type \Next. 
+%If you want to refer to the example after that, type \NNext.
+% 
+% \begin{exe}
+%   \ex[]{This is an example.}
+%   \ex[*]{This are another example.}
+% \end{exe}
+% 
+%\noindent If you want to refer to the previous example, type \Last.
+%If you want to refer to the example before that,
+%type \LLast.
+% 
+% \end{minipage}}
+%
+% \subsubsection{\textsf{expex} emulation mode}
+% 
+% If the user loads the package with the \textsf{expex} option the package will 
+% provide the following macros.
+% 
+%   \begin{itemize}
+% 
+%       \item \DescribeMacro{\nextx} The macro \cmd{\nextx} will print the next 
+%           example number. So, if the previous example was (15), this will 
+%           print (16).
+%           
+%       \item \DescribeMacro{\anextx} The macro \cmd{\anextx} will print the
+%           example number after next. So, if the previous example was (15), 
+%           this will print (17).
+% 
+%       \item \DescribeMacro{\lastx} The macro \cmd{\lastx} will print the 
+%           previous example number. So, if the previous example was (15), this
+%           will print (15).
+% 
+%       \item \DescribeMacro{\blastx} The macro \cmd{\blastx} will print the
+%           example number before last. So, if the previous example was (15), 
+%           this will print (14).
+% 
+%       \item \DescribeMacro{\bblastx} The macro \cmd{\bblastx} will print the 
+%           example number before last. So, if the previous example was (15), 
+%           this will print (13).
+%   \end{itemize}
+%   
+% \noindent Usage of these macros is straightforward. Simply deploy
+% them in running text, as in the following code:
+% 
+%  \begin{verbatim}
+%  If you want to refer to the next example, type (\nextx). 
+%  If you want to refer to the example after that, type (\anextx).
+% 
+%    \begin{exe}
+%      \ex[]{This is an example.}
+%      \ex[*]{This are another example.}
+%    \end{exe}
+% 
+%  \noindent If you want to refer to the previous example,
+%  type (\lastx). If you want to refer to the example before
+%  that, type (\blastx). If you want to refer to the example
+%  before that, type (\bblastx).
+% \end{verbatim}
+%
+% 
+% \noindent This code produces the following output:\medskip
+% 
+% \framebox{\begin{minipage}{0.9\linewidth}
+%If you want to refer to the next example, type \Next. 
+%If you want to refer to the example after that, type \NNext.
+% 
+% \begin{exe}
+%   \ex[]{This is an example.}
+%   \ex[*]{This are another example.}
+% \end{exe}
+% 
+%\noindent If you want to refer to the previous example, type \Last.
+%If you want to refer to the example before that,
+%type \LLast. If you want to refer to the example
+%  before that, type (2).
+% 
+% \end{minipage}}
+% 
+% \subsection{Class compatibility}
+% 
+% I have tested the package with a variety of common \LaTeX\ document classes
+% (including the ams-\LaTeX\ classes, scr* group of classes, 
+% \textsf{tufte-handout}, and the \textsf{exam} class, among several others)
+% and believe it should be broadly compatible with most people's set-ups (so
+% far I have only found it to be incompatible with the \textsf{standalone} 
+% class). If you have an issue, drop me an email and I'll see if I can't make 
+% it work for you.
+% 
+% 
+% \section{Rationale}
+% 
+% This package is really just a quality-of-life add-on for people using the
+% \textsf{gb4e} example package.
+% 
+% The initial motivation for this package came from a colleague who needed to 
+% typeset a document for submission to a publisher but was unable to use 
+% \textsf{linguex} due to constraints imposed by the publisher's class file.
+% She asked specifically if there was any way to get \textsf{gb4e} to replicate
+% the functionality of the \textsf{linguex} commands \cmd{\Next}, \cmd{\NNext},
+% and \cmd{\Last}, among others. 
+% 
+% I figured it wouldn't be too difficult to code up a solution and send it to 
+% her (which I did!), but given that there are likely other people who, due to
+% various externally imposed requirements, might need to use \textsf{gb4e} when
+% they are used to another example pacakge, I thought a more robust solution
+% might be appropriate. This package attempts to provide that.
+% 
+% I also hope that this package can help people migrate to \textsf{gb4e} from 
+% \textsf{linguex}. There are several benefits to using \textsf{gb4e} over 
+% \textsf{linguex}, including a more robust syntax that is more aligned with 
+% standard \LaTeX\ syntax and less sensitive to code formatting such as
+% line-breaks. That said, \textsf{gb4e} is a little less user-friendly than
+% \textsf{linguex}, so I think that providing one of the features that 
+% \textsf{linguex} users expect can help people to migrate if they so choose.
+%
+% \section{Some notes for \textsf{linguex} users}
+% 
+% The \textsf{gb4e} package behaves slightly differently from \textsf{linguex}
+% in a handful of ways. A few of those differences may impact how you 
+% experience using this package.
+% 
+% \begin{itemize}
+% 
+% \item \textsf{gb4e} handles example numbering in footnotes poorly, using 
+% numbering from the main body of the text (\textsf{linguex} uses roman 
+% numerals in footnotes, one of the ways in which it is better). This is 
+% something to keep in mind if you put an example in a footnote.
+% 
+% \item Relatedly, if you use \textsf{gb4e}'s commands for customizing example 
+% label numbers (\emph{e.g.}, \cmd{\exi} and \cmd{\exr}), the code here will
+% not use those special labels.
+% 
+% \end{itemize}
+%
+% \StopEventually{\PrintIndex\PrintChanges}
+% 
+% 
+% \section{Implementation}
+% 
+% In the following section, I present the fully commented code for the package.
+%
+%
+% \subsection{Dependencies}
+% 
+% I use the \textsf{xspace} package to make the spacing after example numbers
+% right when using the \cmd{\Next}, \cmd{\Last}, \emph{etc}., commands. This 
+% mimics the behavior of \textsf{linguex}.
+% 
+%    \begin{macrocode}
+\RequirePackage{xspace}
+%    \end{macrocode}
+%
+% \noindent I also use \textsf{ifthen} for various booleans set by the package
+% options.
+% 
+%    \begin{macrocode}
+\RequirePackage{ifthen}
+%    \end{macrocode}
+%
+% Because this package is designed to work with a range of \textsf{gb4e}
+% variants, there is no line in the code for loading \textsf{gb4e}. Documents
+% loading \textsf{nnext} without loading a \textsf{gb4e} variant will compile
+% will compile, but using any of the included macros will cause an error.
+% 
+%
+% \subsection{Booleans}
+%
+% Here I define what the booleans will be. The first will set the
+% package to emulate linguex's \cmd{\Next}, \cmd{\NNext}, \cmd{\Last}, and
+% \cmd{\LLast} commands. The boolean is set to `false' initially.
+% 
+%    \begin{macrocode}
+\newboolean{emulatelinguex}
+\setboolean{emulatelinguex}{false}
+%    \end{macrocode}
+%
+% \noindent The next boolean will set the package to emulate expex's 
+% \cmd{\nextx}, \cmd{\lastx}, \cmd{\blastx}, \cmd{\anextx}, and \cmd{\bblastx} 
+% commands. The boolean is set to `false' initially.
+% 
+%    \begin{macrocode}
+\newboolean{emulateexpex}
+\setboolean{emulateexpex}{false}
+%    \end{macrocode}
+%
+% \noindent The final boolean will set whether the example numbers in the text
+% should be set with surrounding parentheses or not. The boolean is set to 
+% `true' initially.
+%
+%    \begin{macrocode}
+\newboolean{parentheses}
+\setboolean{parentheses}{true}
+%    \end{macrocode}
+%
+%
+% \subsection{Package options}
+% 
+% Here is where various package options are defined. All the package options do
+% is manipulate the values of the booleans declared in the previous subsection.
+%
+% By using the package option \texttt{linguex}, the user sets the
+% \texttt{emulatelinguex} boolean to `true'.
+% 
+%    \begin{macrocode}
+\DeclareOption{linguex}{
+    \setboolean{emulatelinguex}{true}
+}
+%    \end{macrocode}
+%
+% \noindent By using the package option \texttt{expex}, the user sets the
+% \texttt{emulateexpex} boolean to `true' and the \texttt{emulatelinguex}  and 
+% \texttt{parentheses} booleans to `false'.
+%
+%    \begin{macrocode}
+\DeclareOption{expex}{
+    \setboolean{emulateexpex}{true}
+    \setboolean{emulatelinguex}{false}
+    \setboolean{parentheses}{false}
+}
+%    \end{macrocode}
+%
+% \noindent By using the package option \texttt{noparens}, the user sets the
+% \texttt{parentheses} boolean to `false'.
+% 
+%    \begin{macrocode}
+\DeclareOption{noparens}{
+    \setboolean{parentheses}{false}
+}
+%    \end{macrocode}
+%
+% \noindent After defining our package options, we tell \LaTeX\ to use
+% \textsf{linguex} emulation as the default mode.
+% 
+%    \begin{macrocode}
+\ExecuteOptions{linguex}
+\ProcessOptions\relax
+%    \end{macrocode}
+%
+%
+% \subsection{Detecting \textsf{gb4e} variants}
+%
+% To make this compatible with different variants of \textsf{gb4e}, we need to
+% detect which variant of \textsf{gb4e} the user is using, since there is some
+% variation in  what each variant uses for its example counter. Right now, the
+% code is compatible with the following gb4e-like packages:
+% 
+%   \begin{itemize}
+%       \item \textsf{gb4e}
+%       \item \textsf{langsci-gb4e} (for Language Science Press books)
+%       \item \textsf{gb4e-emulate} (by Alan Munn, which 
+%           reimplements \textsf{gb4e} using the package \textsf{enumitem})
+%   \end{itemize}
+% 
+% The code below checks to see if \textsf{langsci-gb4e} is loaded; if it isn't,
+% it checks to see if \textsf{gb4e-emulate} is loaded; if it isn't, it checks
+% to see if \textsf{gb4e} is loaded. If this fails, the package defaults to 
+% using the \texttt{exx} counter from \textsf{gb4e} on the assumption that the 
+% most likely package to be used instead of \textsf{gb4e} is a modded version. 
+% It also prints a warning to the terminal.
+%
+% The reason this needs to be done is because each of these packages uses a
+% different counter for example numbering under the hood:
+% 
+%   \begin{itemize}
+%       \item \textsf{gb4e} uses the counter \texttt{exx}
+%       \item \textsf{langsci-gb4e} uses the counter \texttt{equation}
+%       \item \textsf{gb4e-emulate} uses the counter \texttt{exei}
+%   \end{itemize}
+%
+% \begin{macro}{\@countername}
+% Once the right package is identified, the value of \cmd{\@countername} is
+% defined to match the counter used by that package. This allows the macros
+% defined below to get the current value of the example counter at any point in
+% the document regardless of what example package is being used.
+%
+%    \begin{macrocode}
+\@ifpackageloaded{langsci-gb4e}%
+  {\newcommand{\@countername}{equation}}
+  {\@ifpackageloaded{gb4e-emulate}%
+    {\newcommand{\@countername}{exei}}
+    {\@ifpackageloaded{gb4e}%
+      {\newcommand{\@countername}{exx}}
+      {\PackageWarningNoLine{nnext}{No known compatible %
+        example package loaded! Examples may not be correctly % 
+        referenced, or there may be fatal errors}%
+        \newcommand{\@countername}{exx}}}}%  
+%    \end{macrocode}
+%
+% \end{macro}
+%
+% 
+% \subsection{Manipulating parentheses}
+%
+% \begin{macro}{\@lparens}
+% \begin{macro}{\@rparens}
+% \begin{macro}{\@afterspace}
+% 
+% % \textsf{linguex} and \textsf{expex} behave differently with regard to
+% % whether the output of reference commands include parentheses: 
+% \textsf{linguex} includes them; \textsf{expex} (like \textsf{gb4e}) does not.
+% The code here defines whether the macros include parentheses based on the 
+% booleans defined above. It does this by setting the commands \cmd{\@lparens} 
+% and \cmd{\@rparens} to either be parentheses or by defining them to be empty.
+% It also defines whether there should be space included after the number (as 
+% in \textsf{linguex}) or not (as in \textsf{expex}). It does so, again, by 
+% defining the macro \textsf{\@afterspace} to either to expand to \cmd{\xspace}
+% or to exapand to nothing. These macros are then used in the 
+% \cmd{\printtmpcounter} macro below.
+%
+%    \begin{macrocode}
+\ifthenelse{\boolean{emulatelinguex}%
+            \AND \boolean{parentheses}}{%
+    \newcommand{\@lparens}{(}
+    \newcommand{\@rparens}{)}
+    \newcommand{\@afterspace}{\xspace}}{%
+    \newcommand{\@lparens}{}
+    \newcommand{\@rparens}{}
+    \newcommand{\@afterspace}{}}%
+%    \end{macrocode}
+%  
+%\end{macro}
+%\end{macro}
+%\end{macro}
+%
+% 
+% \subsection{Generic macros}
+%
+% \textsf{linguex} implements its commands by getting the current value of the 
+% example counter, storing that value in a temporary counter, and then adding
+% or subtracting from that temporary counter. This is the approach that I take
+% below. To replicate this functionality with \textsf{gb4e}, we only have to do
+% this with the counter that it (or its variants) uses
+%
+%
+% \subsubsection{Setting up the temporary counter}
+%
+% First, we create a temporary counter, which will be used to store the value
+% of the next, last, or whichever example number the macro is looking for.
+% 
+%    \begin{macrocode}
+\newcounter{tmpcounter}
+%    \end{macrocode}
+%
+%
+% \begin{macro}{\settmpcounter}
+% 
+% Now we define the command \cmd{\settmpcounter}, which gets the value of 
+% the \textsf{gb4e} example counter (the name of which is stored in 
+% \cmd{\@countername}) and sets the value of the temporary counter to this 
+% value plus some integer:
+% 
+%    \begin{macrocode}
+\newcommand{\settmpcounter}[1]{%
+\setcounter{tmpcounter}{\value{\@countername}}%
+    \addtocounter{tmpcounter}{#1}}
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+% \begin{macro}{\printtmpcounter}
+%
+% Now we define a command for printing the value of temporary counter with or
+% without parentheses and with or without the trailing space, depending on 
+% whether \textsf{linguex} or \textsf{expex} is being emulated. This relies on 
+% how \cmd{\@lparens}, \cmd{\@rparens}, and \cmd{\@afterspace} were defined 
+% above.
+% 
+%    \begin{macrocode}
+\newcommand{\printtmpcounter}[1]{\settmpcounter{#1}%
+\@lparens\thetmpcounter\@rparens\@afterspace}
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+%
+% \subsubsection{Generic definitions}
+%
+% Now we define some generic, under-the-hood macros for commands that add to or
+% subtract from the temporary counters and print those numbers as though they
+% were references. These under-the-hood commands will be assigned user-facing 
+% names depending on whether \textsf{linguex} or \textsf{expex} is being
+% emulated.
+%
+% \begin{macro}{\@Next}
+% 
+% The macro \cmd{\@Next} increments the tempory counter by one, which will be
+% the value of the next example:
+% 
+%    \begin{macrocode}
+\newcommand{\@Next}{\printtmpcounter{1}}
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+% \begin{macro}{\@NNext}
+% 
+% The macro \cmd{\@NNext} increments the tempory counter by two, which will be
+% the value of the example after next:
+% 
+%    \begin{macrocode}
+\newcommand{\@NNext}{\printtmpcounter{2}}
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+% \begin{macro}{\@Last}
+% 
+% The macro \cmd{\@Last} does not change the value of the temporary counter,
+% since this is the value of the previous example:
+% 
+%    \begin{macrocode}
+\newcommand{\@Last}{\printtmpcounter{0}}
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+% \begin{macro}{\@LLast}
+% 
+% The macro \cmd{\@LLast} decreases the tempory counter by one, which will be
+% the value of the example before last:
+% 
+%    \begin{macrocode}
+\newcommand{\@LLast}{\printtmpcounter{-1}}
+%    \end{macrocode}
+% 
+% \end{macro}
+%
+% \begin{macro}{\@LLLast}
+% 
+% The macro \cmd{\@LLLast} decreases the tempory counter by two, which will be
+% the value of the example before the example before last:
+% 
+%    \begin{macrocode}
+\newcommand{\@LLLast}{\printtmpcounter{-2}}
+%    \end{macrocode}
+% 
+% \end{macro}
+% 
+%
+% \subsection{Emulate \textsf{linguex}}
+%
+% \begin{macro}{\Next}
+% \begin{macro}{\NNext}
+% \begin{macro}{\Last}
+% \begin{macro}{\LLast}
+% 
+% If the user chooses to emulate the \textsf{linguex} commands, then this
+% conditional uses the command names from \textsf{linguex} and defines them to
+% expand to the macros defined in the previous subsection.\bigskip
+% 
+%    \begin{macrocode}
+\ifthenelse{\boolean{emulatelinguex}}{%
+    \newcommand{\Next}{\@Next}
+    \newcommand{\NNext}{\@NNext}
+    \newcommand{\Last}{\@Last}
+    \newcommand{\LLast}{\@LLast}}{}
+%    \end{macrocode}
+%
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% 
+% 
+% \subsection{Emulate \textsf{expex}}
+%
+% \begin{macro}{\nextx}
+% \begin{macro}{\anextx}
+% \begin{macro}{\lastx}
+% \begin{macro}{\blastx}
+% \begin{macro}{\bblastx}
+% If the user chooses to emulate the \textsf{linguex} commands, then this
+% conditional uses the command names from \textsf{linguex} and defines them to
+% expand to the macros defined in the previous subsection.\bigskip\medskip
+% 
+%    \begin{macrocode}
+\ifthenelse{\boolean{emulateexpex}}{%
+    \newcommand{\nextx}{\@Next}
+    \newcommand{\anextx}{\@NNext}
+    \newcommand{\lastx}{\@Last}
+    \newcommand{\blastx}{\@LLast}
+    \newcommand{\bblastx}{\@LLLast}}{}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \Finale
+\endinput
